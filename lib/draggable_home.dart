@@ -187,7 +187,7 @@ class _DraggableHomeState extends State<DraggableHome> {
   ) {
     return CustomScrollView(
       physics: const BouncingScrollPhysics(),
-      controller: scrollController,
+      controller: widget.scrollController,
       slivers: [
         StreamBuilder<List<bool>>(
           stream: CombineLatestStream.list<bool>([
