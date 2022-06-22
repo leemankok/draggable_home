@@ -80,6 +80,8 @@ class DraggableHome extends StatefulWidget {
 
   /// floatingActionButtonAnimator: Provider of animations to move the FloatingActionButton between FloatingActionButtonLocations.
   final FloatingActionButtonAnimator? floatingActionButtonAnimator;
+  
+  final ScrollController scrollController;
 
   /// This will create DraggableHome.
   const DraggableHome({
@@ -108,6 +110,7 @@ class DraggableHome extends StatefulWidget {
     this.floatingActionButton,
     this.floatingActionButtonLocation,
     this.floatingActionButtonAnimator,
+    required this.scrollController
   })  : assert(headerExpandedHeight > 0.0 &&
             headerExpandedHeight < stretchMaxHeight),
         assert(
@@ -184,6 +187,7 @@ class _DraggableHomeState extends State<DraggableHome> {
   ) {
     return CustomScrollView(
       physics: const BouncingScrollPhysics(),
+      controller: scrollController,
       slivers: [
         StreamBuilder<List<bool>>(
           stream: CombineLatestStream.list<bool>([
